@@ -1,44 +1,76 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
 import "./App.css";
 
 const links = [
     {
         id: 1,
-        name: "Link PO Rawon",
+        name: "Pre-order Food",
         url: "https://forms.gle/2tWgtvCWiiE6EpWQ9",
+        color: "#FF6384",
+        icon: "fas fa-utensils",
     },
     {
         id: 2,
-        name: "Link EOI Retreat",
+        name: "Expression of Interest Retreat",
         url: "https://forms.gle/xVHvYCAi9fFSR3fCA",
+        color: "#36A2EB",
+        icon: "fas fa-pencil-alt",
+    },
+    {
+        id: 3,
+        name: "Instagram",
+        url: "https://www.instagram.com/htc_healingforgiving",
+        color: "#36A2EB",
+        icon: "fab fa-instagram",
     },
 ];
 
 const App = () => {
     return (
-        <Container className="my-5">
-            <h1 className="text-center mb-4">
-                HTC HEALING FORGIVING - PLB 2023
-            </h1>
-            <Row className="justify-content-center">
+        <>
+            <section className="animated-background">
+                <div id="stars1"></div>
+                <div id="stars2"></div>
+                <div id="stars3"></div>
+            </section>
+
+            <div id="profilePicture">
+                <img src="build/logoHTC.png" alt="logo HTC" />
+            </div>
+
+            {/* <div className="overlay" id="popup">
+                <div className="popup">
+                    <div className="popup-photo">
+                        <a href="" target="_blank">
+                            <img src="" alt="" />
+                        </a>
+                    </div>
+                    <div className="popup-quote">HTC Melbourne picture</div>
+                    <a href="" lassName="popup-close" onClick="history.back()">
+                        &times;
+                    </a>
+                </div>
+            </div> */}
+
+            <div id="userName">@htc_healingforgiving</div>
+
+            <div id="links">
                 {links.map((link) => (
-                    <Col key={link.id} xs={12} sm={6} md={4} lg={3}>
-                        <Card className="link-card">
-                            <a
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Card.Body>
-                                    <Card.Title>{link.name}</Card.Title>
-                                </Card.Body>
-                            </a>
-                        </Card>
-                    </Col>
+                    <a
+                        key={link.id}
+                        className="link"
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <i className={link.icon}>&nbsp;</i>
+                        {link.name}
+                    </a>
                 ))}
-            </Row>
-        </Container>
+            </div>
+
+            <div id="hashtag">#HealingForgiving❤</div>
+        </>
     );
 };
 
