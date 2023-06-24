@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import "./App.css";
-import { Button } from "react-bootstrap";
 
 const links = [
     {
@@ -20,7 +19,7 @@ const App = () => {
     return (
         <Container className="my-5">
             <h1 className="text-center mb-4">
-                HTC HEALING FORGIVING PLB 2023 SYALALAA
+                HTC HEALING FORGIVING - PLB 2023
             </h1>
             <Row className="justify-content-center">
                 {links.map((link) => (
