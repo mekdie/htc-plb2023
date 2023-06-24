@@ -35,7 +35,10 @@ const App = () => {
             </section>
 
             <div id="profilePicture">
-                <img src="build/logoHTC.png" alt="logo HTC" />
+                <img
+                    src="https://raw.githubusercontent.com/mekdie/htc-plb2023/main/public/logoHTC.png"
+                    alt="logo HTC"
+                />
             </div>
 
             {/* <div className="overlay" id="popup">
@@ -52,7 +55,13 @@ const App = () => {
                 </div>
             </div> */}
 
-            <div id="userName">@htc_healingforgiving</div>
+            <div id="userName">
+                <h2>@htc_healingforgiving</h2>
+                <p>
+                    Retreat Penyembuhan Luka Batin{" "}
+                    <span className="nowrap">HTC Melbourne 2023</span>
+                </p>
+            </div>
 
             <div id="links">
                 {links.map((link) => (
@@ -70,6 +79,36 @@ const App = () => {
             </div>
 
             <div id="hashtag">#HealingForgiving❤</div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p>
+                                &copy; Designed and built by{" "}
+                                <a
+                                    href="https://github.com/mekdie/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Mekdie
+                                </a>
+                                {/* &nbsp;for Holy Trinity Community Melbourne 2023:
+                                Retreat PLB "Healing Forgiving" */}
+                            </p>
+                            <p>
+                                <a
+                                    href="https://github.com/mekdie/htc-plb2023"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <i className="fab fa-github">&nbsp;</i>
+                                    GitHub
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </>
     );
 };
