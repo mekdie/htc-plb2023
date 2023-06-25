@@ -3,6 +3,7 @@ import Links from "./pages/Links";
 import LinksAdmin from "./pages/LinksAdmin";
 import NotFound from "./pages/NotFound";
 import "./App.css";
+import Footer from "./components/Footer";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Route path="/*" element={<NotFound />} />
                 </Routes>
             </div>
+            <Footer />
         </div>
     );
 }

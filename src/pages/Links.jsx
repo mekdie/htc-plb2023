@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase-config";
-
+import { Link } from "react-router-dom";
 const Links = () => {
     //db references
     const linksCollectionRef = collection(db, "links");
@@ -74,38 +74,10 @@ const Links = () => {
             </div>
 
             <div id="hashtag">
-                #HealingForgiving<i class="fas fa-heart"></i>
+                <Link to="/admin">
+                    #HealingForgiving<i class="fas fa-heart"></i>
+                </Link>
             </div>
-            <footer class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col text-center">
-                            <p>
-                                &copy; Designed and built by{" "}
-                                <a
-                                    href="https://github.com/mekdie/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Mekdie
-                                </a>
-                                {/* &nbsp;for Holy Trinity Community Melbourne 2023:
-                                Retreat PLB "Healing Forgiving" */}
-                            </p>
-                            <p>
-                                <a
-                                    href="https://github.com/mekdie/htc-plb2023"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <i className="fab fa-github">&nbsp;</i>
-                                    GitHub
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </>
     );
 };
