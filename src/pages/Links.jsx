@@ -10,38 +10,15 @@ import {
 } from "firebase/firestore";
 import { db, storage } from "../firebase-config";
 
-//soon will be hosted in the database / firebase to provide flexible
-const linksDb = [
-    {
-        id: 1,
-        name: "Pre-order Food",
-        url: "https://forms.gle/2tWgtvCWiiE6EpWQ9",
-        icon: "fas fa-utensils",
-    },
-    {
-        id: 2,
-        name: "Expression of Interest Retreat",
-        url: "https://forms.gle/xVHvYCAi9fFSR3fCA",
-        icon: "fas fa-pencil-alt",
-    },
-    {
-        id: 3,
-        name: "Instagram",
-        url: "https://www.instagram.com/htc_healingforgiving",
-        icon: "fab fa-instagram",
-    },
-];
-
 const Links = () => {
     //db references
     const linksCollectionRef = collection(db, "links");
 
-    //states
+    // //states
     const [links, setLinks] = useState([]);
 
     const getLinks = async () => {
         const data = await getDocs(linksCollectionRef);
-        // console.log(data.docs[0].data());
         setLinks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 
@@ -100,7 +77,7 @@ const Links = () => {
             </div>
             {/* List all the available links */}
             <div id="links">
-                {linksDb.map((link) => (
+                {links.map((link) => (
                     <a
                         key={link.id}
                         className="link"
