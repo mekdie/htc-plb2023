@@ -1,14 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import {
-    collection,
-    getDoc,
-    getDocs,
-    doc,
-    updateDoc,
-    deleteDoc,
-} from "firebase/firestore";
-import { db, storage } from "../firebase-config";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase-config";
 
 const Links = () => {
     //db references
@@ -21,17 +14,6 @@ const Links = () => {
         const data = await getDocs(linksCollectionRef);
         setLinks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
-
-    // const getPagePasscode = async () => {
-    //     const passcodeDoc = doc(
-    //         db,
-    //         "passcode",
-    //         process.env.REACT_APP_ADMIN_PASSWORD
-    //     );
-    //     const docSnap = await getDoc(passcodeDoc);
-
-    //     setPasscode(docSnap.data().participants);
-    // };
 
     useEffect(() => {
         // reference:
