@@ -290,3 +290,9 @@ body {
     height: 50px;
     cursor: pointer;
 }
+
+.links-container {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Links from "./pages/Links";
-import LinksUpdate from "./pages/LinksUpdate";
+import LinksAdmin from "./pages/LinksAdmin";
 import NotFound from "./pages/NotFound";
 import "./App.css";
 
@@ -11,7 +11,7 @@ function App() {
             <div id="content-wrap">
                 <Routes>
                     <Route path="/" element={<Links />} />
-                    <Route path="/admin" element={<LinksUpdate />} />
+                    <Route path="/admin" element={<LinksAdmin />} />
                     <Route path="/*" element={<NotFound />} />
                 </Routes>
             </div>

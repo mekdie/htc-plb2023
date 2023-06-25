@@ -38,7 +38,7 @@ function PasscodeInput({ onSubmit, wrongPasscode }) {
                         </Stack>
                         {!wrongPasscode && (
                             <Form.Text style={{ color: "red" }}>
-                                Please enter a valid passcode
+                                Salah woii wkwk, dicoba lagi
                             </Form.Text>
                         )}
                     </Form>
