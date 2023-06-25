@@ -15,8 +15,7 @@ const Footer = () => {
                             >
                                 Mekdie
                             </a>
-                            {/* &nbsp;for Holy Trinity Community Melbourne 2023:
-                    Retreat PLB "Healing Forgiving" */}
+                            &nbsp;specially for HTC2023
                         </p>
                         <p>
                             <a

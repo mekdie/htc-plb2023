@@ -15,8 +15,8 @@ function App() {
                     <Route path="/admin" element={<LinksAdmin />} />
                     <Route path="/*" element={<NotFound />} />
                 </Routes>
+                <Footer />
             </div>
-            <Footer />
         </div>
     );
 }

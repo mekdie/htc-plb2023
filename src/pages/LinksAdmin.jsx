@@ -7,11 +7,9 @@ import {
     getDocs,
     doc,
     updateDoc,
-    deleteDoc,
 } from "firebase/firestore";
 import { db, storage } from "../firebase-config";
-import { ref, deleteObject } from "firebase/storage";
-import { Container, Table, Button, Modal } from "react-bootstrap";
+import { Container, Table, Button, Modal, Form } from "react-bootstrap";
 import { scale } from "../Helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -22,12 +20,19 @@ const LinksAdmin = () => {
     const [passcodeFlag, setPasscodeFlag] = useState(false);
     const [passcodeValidation, setPasscodeValidation] = useState(true);
 
-    //links state
     //db references
     const linksCollectionRef = collection(db, "links");
 
     // //states
     const [links, setLinks] = useState([]);
+    const [currentLink, setCurrentLink] = useState(null);
+    const [editableData, setEditableData] = useState({});
+
+    //modal state
+    const [showModal, setShowModal] = useState(false);
+    //=======
+
+    //get single link
 
     const getLinks = async () => {
         const data = await getDocs(linksCollectionRef);
@@ -98,9 +103,13 @@ const LinksAdmin = () => {
                                     icon={faPencil}
                                     color="black"
                                     onClick={() => {
-                                        alert(
-                                            "belom bisa sabar ya in development :)"
-                                        );
+                                        if (showModal) {
+                                            setShowModal(false);
+                                        } else {
+                                            setShowModal(true);
+                                        }
+                                        setEditableData(link);
+                                        setCurrentLink(link);
                                     }}
                                 />
                             </span>
@@ -128,6 +137,79 @@ const LinksAdmin = () => {
                 <tr className="align-middle text-center">
                     <td colSpan={10}>No participants found</td>
                 </tr>
+            );
+        }
+    };
+
+    const handleChange = (e) => {
+        setEditableData({
+            ...editableData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            document.getElementById("updateBtn").click();
+        }
+    };
+
+    const updateModal = () => {
+        if (currentLink) {
+            return (
+                <>
+                    <Modal
+                        show={showModal}
+                        onHide={() => setShowModal(false)}
+                        size="lg"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
+                    >
+                        <Modal.Header closeButton>
+                            <Modal.Title>Update this link</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form.Group controlId="name">
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="name"
+                                    value={editableData.name}
+                                    onChange={handleChange}
+                                    onKeyPress={handleKeyPress}
+                                />
+                            </Form.Group>
+
+                            <Form.Group controlId="email">
+                                <Form.Label>URL</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="text"
+                                    value={editableData.url}
+                                    onChange={handleChange}
+                                    onKeyPress={handleKeyPress}
+                                />
+                            </Form.Group>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button
+                                variant="default"
+                                onClick={() => setShowModal(false)}
+                            >
+                                Cancel
+                            </Button>
+                            <Button
+                                id="updateBtn"
+                                onClick={() => updateLink()}
+                                variant="danger"
+                                type="submit"
+                            >
+                                Update
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </>
             );
         }
     };
@@ -161,19 +243,18 @@ const LinksAdmin = () => {
                             renderLinks()
                         )}
                     </tbody>
-                    {/* {users.length > 0 && (
-                        <caption>
-                            <Button
-                                variant="danger"
-                                onClick={() => deleteModal({ type: 2 })}
-                            >
-                                Delete all records
-                            </Button>
-                        </caption>
-                    )} */}
                 </Table>
             </div>
         );
+    };
+
+    const updateLink = async () => {
+        setShowModal(false);
+        //update link here
+        const userDoc = doc(db, "links", editableData.id);
+
+        await updateDoc(userDoc, editableData);
+        getLinks();
     };
 
     const renderElements = () => {
@@ -200,7 +281,12 @@ const LinksAdmin = () => {
         getPagePasscode();
     }, []);
 
-    return <div>{renderElements()}</div>;
+    return (
+        <div>
+            {renderElements()}
+            {updateModal()}
+        </div>
+    );
 };
 
 export default LinksAdmin;

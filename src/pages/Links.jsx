@@ -53,7 +53,7 @@ const Links = () => {
             <div id="userName">
                 <h2>@htc_healingforgiving</h2>
                 <p>
-                    Retreat Penyembuhan Luka Batin{" "}
+                    Retret Penyembuhan Luka Batin{" "}
                     <span className="nowrap">HTC Melbourne 2023</span>
                 </p>
             </div>

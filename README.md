@@ -1,10 +1,10 @@
 # HTC HEALING FORGIVING 2023 Useful Links (Linktree Clone)
 
-HTC Healing Forgiving Retreat PLB 2023 Useful Links built with React which meant to clone Linktree with fully customised feature and design. More to come :)
+HTC Healing Forgiving Retreat PLB 2023 Useful Links built with React which was meant to clone Linktree with fully customized feature and design. More to come :)
 
 Features:
 
--   Provide basic useful links
+-   Provide basic useful links at homepage
 -   Mobile responsive
--   Added an ability to provide custom editable links / text (admin page)
--   Alternative authentication authorization to access admin page
+-   Alternative authentication authorization to access admin page (just password - simple mode)
+-   Added an ability to edit links (text, url, icon)
