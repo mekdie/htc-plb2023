@@ -1,26 +1,24 @@
 import React from "react";
 import "./App.css";
 
+//soon will be hosted in the database / firebase to provide flexible
 const links = [
     {
         id: 1,
         name: "Pre-order Food",
         url: "https://forms.gle/2tWgtvCWiiE6EpWQ9",
-        color: "#FF6384",
         icon: "fas fa-utensils",
     },
     {
         id: 2,
         name: "Expression of Interest Retreat",
         url: "https://forms.gle/xVHvYCAi9fFSR3fCA",
-        color: "#36A2EB",
         icon: "fas fa-pencil-alt",
     },
     {
         id: 3,
         name: "Instagram",
         url: "https://www.instagram.com/htc_healingforgiving",
-        color: "#36A2EB",
         icon: "fab fa-instagram",
     },
 ];
@@ -29,9 +27,9 @@ const App = () => {
     return (
         <>
             <section className="animated-background">
-                <div id="stars1"></div>
+                {/* <div id="stars1"></div>
                 <div id="stars2"></div>
-                <div id="stars3"></div>
+                <div id="stars3"></div> */}
             </section>
 
             <div id="profilePicture">
@@ -62,7 +60,7 @@ const App = () => {
                     <span className="nowrap">HTC Melbourne 2023</span>
                 </p>
             </div>
-
+            {/* List all the available links */}
             <div id="links">
                 {links.map((link) => (
                     <a
@@ -78,7 +76,9 @@ const App = () => {
                 ))}
             </div>
 
-            <div id="hashtag">#HealingForgiving❤</div>
+            <div id="hashtag">
+                #HealingForgiving<i class="fas fa-heart"></i>
+            </div>
             <footer class="footer">
                 <div class="container">
                     <div class="row">
