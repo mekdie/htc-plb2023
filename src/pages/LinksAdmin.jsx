@@ -142,9 +142,10 @@ const LinksAdmin = () => {
     };
 
     const handleChange = (e) => {
+        const { name, value } = e.target;
         setEditableData({
             ...editableData,
-            [e.target.name]: e.target.value,
+            [name]: value,
         });
     };
 
@@ -170,7 +171,7 @@ const LinksAdmin = () => {
                             <Modal.Title>Update this link</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form.Group controlId="name">
+                            <Form.Group>
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -181,12 +182,23 @@ const LinksAdmin = () => {
                                 />
                             </Form.Group>
 
-                            <Form.Group controlId="email">
+                            <Form.Group>
                                 <Form.Label>URL</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name="text"
+                                    name="url"
                                     value={editableData.url}
+                                    onChange={handleChange}
+                                    onKeyPress={handleKeyPress}
+                                />
+                            </Form.Group>
+
+                            <Form.Group>
+                                <Form.Label>Icon</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="icon"
+                                    value={editableData.icon}
                                     onChange={handleChange}
                                     onKeyPress={handleKeyPress}
                                 />
